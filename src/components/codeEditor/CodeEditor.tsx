@@ -2,6 +2,11 @@ import { FC, useRef } from "react";
 import MonacoEditor, { EditorDidMount } from "@monaco-editor/react";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
+import codeShift from "jscodeshift";
+import Highlighter from "monaco-jsx-highlighter";
+
+import "./codeEditor.scss";
+import "./syntax.scss";
 
 interface ICodeEditor {
   initialValue: string;
@@ -17,24 +22,45 @@ const CodeEditor: FC<ICodeEditor> = ({ initialValue, onChange }) => {
     });
 
     monacoEditor.getModel()?.updateOptions({ tabSize: 2 });
+
+    const highlighter = new Highlighter(
+      //@ts-ignore
+      window.monaco,
+      codeShift,
+      monacoEditor
+    );
+
+    highlighter.highLightOnDidChangeModelContent(
+      () => {},
+      () => {},
+      undefined,
+      () => {}
+    );
   };
 
   const onFormatClick = () => {
     const unformated = editorRef.current.getModel().getValue();
 
-    const formated = prettier.format(unformated, {
-      parser: "babel",
-      plugins: [parser],
-      useTabs: false,
-      semi: true,
-      singleQuote: true,
-    });
+    const formated = prettier
+      .format(unformated, {
+        parser: "babel",
+        plugins: [parser],
+        useTabs: false,
+        semi: true,
+        singleQuote: true,
+      })
+      .replace(/\n/, "");
 
     editorRef.current.setValue(formated);
   };
   return (
-    <div>
-      <button onClick={onFormatClick}>Format</button>
+    <div className="editor-wrapper">
+      <button
+        className="button button-format is-primary is-small"
+        onClick={onFormatClick}
+      >
+        Format
+      </button>
       <MonacoEditor
         editorDidMount={onEditorDidMount}
         value={initialValue}

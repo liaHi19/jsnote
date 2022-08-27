@@ -5,7 +5,9 @@ import ReactDOM from "react-dom/client";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 import { fetchPlugin } from "./plugins/fetch-plugin";
 
-import CodeEditor from "./components/CodeEditor";
+import CodeEditor from "./components/codeEditor/CodeEditor";
+
+import "bulmaswatch/superhero/bulmaswatch.min.css";
 
 const App = () => {
   const ref = useRef<any>();
