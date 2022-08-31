@@ -1,14 +1,16 @@
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 
-import TextEditor from "./components/textEditor/TextEditor";
+import CellList from "./components/cellList/CellList";
+import { store } from "./state";
 
 import "bulmaswatch/superhero/bulmaswatch.min.css";
 
 const App = () => {
   return (
-    <>
-      <TextEditor />
-    </>
+    <Provider store={store}>
+      <CellList />
+    </Provider>
   );
 };
 
