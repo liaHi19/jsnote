@@ -1,7 +1,7 @@
-import { useState, useEffect, FC } from "react";
+import { useEffect, FC } from "react";
 
-import { bundle } from "../bundler";
 import { useActions } from "../hooks/use-actions";
+import { useTypedSelector } from "../hooks/use-typed-selector";
 import { Cell } from "../state";
 
 import CodeEditor from "./codeEditor/CodeEditor";
@@ -13,22 +13,24 @@ interface ICodeCell {
 }
 
 const CodeCell: FC<ICodeCell> = ({ cell }) => {
-  const [code, setCode] = useState("");
-  const [err, setErr] = useState("");
-
-  const { updateCell } = useActions();
+  const { updateCell, createBundle } = useActions();
+  const bundle = useTypedSelector((state) => state.bundles[cell.id]);
 
   useEffect(() => {
+    if (!bundle) {
+      createBundle(cell.id, cell.content);
+      return;
+    }
     const timer = setTimeout(async () => {
-      const output = await bundle(cell.content);
-      setCode(output.code);
-      setErr(output.err);
+      createBundle(cell.id, cell.content);
     }, 1500);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [cell.content]);
+
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cell.content, cell.id, createBundle]);
 
   return (
     <Resizable direction="vertical">
@@ -47,7 +49,7 @@ const CodeCell: FC<ICodeCell> = ({ cell }) => {
             }}
           />
         </Resizable>
-        <Preview code={code} status={err} />
+        {bundle && <Preview code={bundle.code} status={bundle.err} />}
       </div>
     </Resizable>
   );
