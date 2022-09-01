@@ -3,6 +3,9 @@ import { Cell } from "../../state";
 
 import TextEditor from "../textEditor/TextEditor";
 import CodeCell from "../CodeCell";
+import ActionBar from "../actionBar/ActionBar";
+
+import "./cellListItem.scss";
 
 interface ICellListItem {
   cell: Cell;
@@ -10,11 +13,19 @@ interface ICellListItem {
 
 const CellListItem: FC<ICellListItem> = ({ cell }) => {
   return (
-    <div>
+    <div className="cell-list-item">
       {cell.type === "code" ? (
-        <CodeCell cell={cell} />
+        <>
+          <div className="action-bar-wrapper">
+            <ActionBar id={cell.id} />
+          </div>
+          <CodeCell cell={cell} />
+        </>
       ) : (
-        <TextEditor cell={cell} />
+        <>
+          <TextEditor cell={cell} />
+          <ActionBar id={cell.id} />
+        </>
       )}
     </div>
   );
