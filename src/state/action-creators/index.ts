@@ -31,7 +31,7 @@ export const updateCell = (id: string, content: string): UpdateCellAction => ({
 });
 
 export const insertCellBefore = (
-  id: string,
+  id: string | null,
   type: CellTypes
 ): InsertCellBeforeAction => ({
   type: ActionType.INSERT_CELL_BEFORE,
