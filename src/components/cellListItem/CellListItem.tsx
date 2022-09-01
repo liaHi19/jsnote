@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Cell } from "../../state";
 
 import TextEditor from "../textEditor/TextEditor";
-import CodeCell from "../CodeCell";
+import CodeCell from "../codeCell/CodeCell";
 import ActionBar from "../actionBar/ActionBar";
 
 import "./cellListItem.scss";
