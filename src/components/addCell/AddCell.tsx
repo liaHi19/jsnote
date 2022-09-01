@@ -6,22 +6,22 @@ import AddCellButton from "./AddCellButton";
 import "./addCell.scss";
 
 interface IAddCell {
-  nextCellId: string | null;
+  previousCellId: string | null;
   forceVisible?: boolean;
 }
 
-const AddCell: FC<IAddCell> = ({ nextCellId, forceVisible }) => {
-  const { insertCellBefore } = useActions();
+const AddCell: FC<IAddCell> = ({ previousCellId, forceVisible }) => {
+  const { insertCellAfter } = useActions();
 
   return (
     <div className={`add-cell ${forceVisible && "force-visible"}`}>
       <div className="add-buttons">
         <AddCellButton
-          onClick={() => insertCellBefore(nextCellId, "code")}
+          onClick={() => insertCellAfter(previousCellId, "code")}
           content="Code"
         />
         <AddCellButton
-          onClick={() => insertCellBefore(nextCellId, "text")}
+          onClick={() => insertCellAfter(previousCellId, "text")}
           content="Text"
         />
       </div>
