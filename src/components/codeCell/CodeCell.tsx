@@ -2,6 +2,7 @@ import { useEffect, FC } from "react";
 
 import { useActions } from "../../hooks/use-actions";
 import { useTypedSelector } from "../../hooks/use-typed-selector";
+import { useCumulativeCode } from "../../hooks/use-cumulative-code";
 import { Cell } from "../../state";
 
 import CodeEditor from "../codeEditor/CodeEditor";
@@ -18,13 +19,15 @@ const CodeCell: FC<ICodeCell> = ({ cell }) => {
   const { updateCell, createBundle } = useActions();
   const bundle = useTypedSelector((state) => state.bundles[cell.id]);
 
+  const cumulativeCode = useCumulativeCode(cell.id);
+
   useEffect(() => {
     if (!bundle) {
-      createBundle(cell.id, cell.content);
+      createBundle(cell.id, cumulativeCode);
       return;
     }
     const timer = setTimeout(async () => {
-      createBundle(cell.id, cell.content);
+      createBundle(cell.id, cumulativeCode);
     }, 1500);
 
     return () => {
@@ -32,7 +35,7 @@ const CodeCell: FC<ICodeCell> = ({ cell }) => {
     };
 
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cell.content, cell.id, createBundle]);
+  }, [cumulativeCode, cell.id, createBundle]);
 
   return (
     <Resizable direction="vertical">
