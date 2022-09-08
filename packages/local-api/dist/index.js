@@ -19,7 +19,7 @@ const serve = (filename, port, dir, useProxy) => {
         }));
     }
     else {
-        const packagePath = path_1.default.resolve("local-client/build/index.html");
+        const packagePath = path_1.default.resolve("@jsnote-liahi/local-client/build/index.html");
         app.use(express_1.default.static(path_1.default.dirname(packagePath)));
     }
     return new Promise((resolve, reject) => {

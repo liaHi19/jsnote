@@ -23,7 +23,9 @@ export const serve = (
       })
     );
   } else {
-    const packagePath = path.resolve("local-client/build/index.html");
+    const packagePath = path.resolve(
+      "@jsnote-liahi/local-client/build/index.html"
+    );
     app.use(express.static(path.dirname(packagePath)));
   }
 
