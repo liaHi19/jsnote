@@ -1,5 +1,7 @@
-import React, { Fragment, FC } from "react";
+import React, { Fragment, FC, useEffect } from "react";
 import { useTypedSelector } from "../../hooks/use-typed-selector";
+
+import { useActions } from "../../hooks/use-actions";
 
 import CellListItem from "../cellListItem/CellListItem";
 import AddCell from "../addCell/AddCell";
@@ -10,6 +12,12 @@ const CellList: FC = () => {
   const cells = useTypedSelector(({ cells: { order, data } }) =>
     order.map((id) => data[id])
   );
+  const { fetchCells } = useActions();
+
+  useEffect(() => {
+    fetchCells();
+  }, []);
+
   return (
     <div className="cell-list">
       <AddCell forceVisible={cells.length === 0} previousCellId={null} />
