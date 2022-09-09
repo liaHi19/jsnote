@@ -1,6 +1,6 @@
 {
   "name": "@jsnote-liahi/local-client",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -66,5 +66,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "gitHead": "ac8e6dd9b6b472e339b6db2d58b92f4ffc722e9d"
 }
