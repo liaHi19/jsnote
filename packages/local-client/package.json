@@ -1,6 +1,6 @@
 {
   "name": "@jsnote-liahi/local-client",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -67,5 +67,5 @@
       "last 1 safari version"
     ]
   },
-  "gitHead": "c3b82465e8b6df77d24ff9ea4cef3756ca5773b8"
+  "gitHead": "f74e7fb949324df26087e077b8b3fea770b94d3b"
 }

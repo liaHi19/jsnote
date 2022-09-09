@@ -1,6 +1,6 @@
 {
   "name": "jsnote-liahi",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "",
   "bin": "dist/index.js",
   "publishConfig": {
@@ -17,10 +17,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@jsnote-liahi/local-client": "^4.0.0"
+    "@jsnote-liahi/local-client": "^5.0.0"
   },
   "devDependencies": {
-    "@jsnote-liahi/local-api": "^4.0.0",
+    "@jsnote-liahi/local-api": "^5.0.0",
     "@types/node": "^18.7.15",
     "commander": "^9.4.0",
     "esbuild": "0.8.26",
