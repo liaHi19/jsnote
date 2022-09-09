@@ -1,6 +1,6 @@
 {
   "name": "jsnote-liahi",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "",
   "bin": "dist/index.js",
   "publishConfig": {
@@ -17,14 +17,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@jsnote-liahi/local-client": "^2.0.0"
+    "@jsnote-liahi/local-client": "^3.0.0"
   },
   "devDependencies": {
-    "@jsnote-liahi/local-api": "^2.0.0",
+    "@jsnote-liahi/local-api": "^3.0.0",
     "@types/node": "^18.7.15",
     "commander": "^9.4.0",
     "esbuild": "0.8.26",
     "typescript": "^4.8.2"
   },
-  "gitHead": "ac8e6dd9b6b472e339b6db2d58b92f4ffc722e9d"
+  "gitHead": "741f20189ba60c0107947946705b61e6c924c1f0"
 }
