@@ -1,6 +1,6 @@
 {
   "name": "@jsnote-liahi/local-client",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -8,7 +8,7 @@
     "build"
   ],
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^6.2.0",
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@monaco-editor/react": "3.7.5",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -67,5 +67,5 @@
       "last 1 safari version"
     ]
   },
-  "gitHead": "741f20189ba60c0107947946705b61e6c924c1f0"
+  "gitHead": "c3b82465e8b6df77d24ff9ea4cef3756ca5773b8"
 }
